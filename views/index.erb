@@ -2,6 +2,7 @@
 <html>
   <head>
     <title>Psychopass</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="style.css">
     <style>
       .gif { 
@@ -16,8 +17,44 @@
   <body> 
 
     <div class="gif">
-        <center><h1><%= @tag || "yo" %></h1></center>
-        <center><div id="comments"></div></center>
+        <div class="row"></div>
+        <div class="row comments">
+          <div class="col-md-1"></div>
+          <div class="col-md-2" id="6"></div>
+          <div class="col-md-2" id="7"></div>
+          <div class="col-md-2" id="8"></div>
+          <div class="col-md-2" id="9"></div>
+          <div class="col-md-2" id="10"></div>
+          <div class="col-md-1"></div>
+        </div>
+        <div class="row comments">
+          <div class="col-md-1"></div>
+          <div class="col-md-2" id="11"></div>
+          <div class="col-md-6">
+            <center><h1><%= @tag || "yo" %></h1></center>
+          </div>
+          <div class="col-md-2" id="12"></div>
+          <div class="col-md-1"></div>
+        </div>
+        <div class="row comments">
+          <div class="col-md-1"></div>
+          <div class="col-md-2" id="13"></div>
+          <div class="col-md-2" id="14"></div>
+          <div class="col-md-2" id="15"></div>
+          <div class="col-md-2" id="16"></div>
+          <div class="col-md-2" id="17"></div>
+          <div class="col-md-1"></div>
+        </div>
+        <div class="row comments">
+          <div class="col-md-1"></div>
+          <div class="col-md-2" id="18"></div>
+          <div class="col-md-2" id="19"></div>
+          <div class="col-md-2" id="20"></div>
+          <div class="col-md-2" id="21"></div>
+          <div class="col-md-2" id="22"></div>
+          <div class="col-md-1"></div>
+        </div>
+        <!-- <center><div id="comments"></div></center> -->
     </div>
 
     <script src="//connect.soundcloud.com/sdk.js"></script>
@@ -29,15 +66,19 @@
       var keyword = "<%= @tag %>";
 
       SC.get('/tracks', { q: keyword }, function(tracks) {
+        console.log(tracks);
         var number = Math.floor(Math.random() * 50);
         var track_id = tracks[number].id;
+        console.log(tracks[number]);
         
         SC.stream("/tracks/"+track_id, {
           autoPlay: true,
           ontimedcomments: function(comments){
             var comment_stream = comments[0].body;
+            var div_id = Math.floor(Math.random() * 22);
+            console.log(div_id);
             console.log(comment_stream);
-            $("#comments").prepend("<p>"+comment_stream+"</p>");
+            $("#"+div_id).html("<center><p>"+comment_stream+"</p></center>");
           }
         });
       });
