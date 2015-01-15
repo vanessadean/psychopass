@@ -1,9 +1,8 @@
 <!doctype html>
 <html>
   <head>
-    <title>Gif Sound</title>
-    <link rel="stylesheet" type="text/css" href="css/style.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <title>Psychopass</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
     <style>
       .gif { 
         background: url(<%=@image%>) no-repeat center center fixed; 
@@ -11,9 +10,6 @@
         -moz-background-size: cover;
         -o-background-size: cover;
         background-size: cover;
-        width: 110%;
-        margin-top: -65px;
-        margin-left: -10px;
       }
     </style>
   </head>
@@ -25,6 +21,27 @@
     </div>
 
     <script src="//connect.soundcloud.com/sdk.js"></script>
-    <script src="js/application.js"></script>
+    <script>
+      SC.initialize({
+        client_id: '3f73e8bd9c4e62a632fc640226c5d92e'
+      });
+
+      var keyword = "<%= @tag %>";
+
+      SC.get('/tracks', { q: keyword }, function(tracks) {
+        var number = Math.floor(Math.random() * 50);
+        var track_id = tracks[number].id;
+        
+        SC.stream("/tracks/"+track_id, {
+          autoPlay: true,
+          ontimedcomments: function(comments){
+            var comment_stream = comments[0].body;
+            console.log(comment_stream);
+            $("#comments").prepend("<p>"+comment_stream+"</p>");
+          }
+        });
+      });
+    </script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
   </body>
 </html>
