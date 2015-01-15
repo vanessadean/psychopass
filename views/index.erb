@@ -1,0 +1,30 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Gif Sound</title>
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <style>
+      .gif { 
+        background: url(<%=@image%>) no-repeat center center fixed; 
+        -webkit-background-size: cover;
+        -moz-background-size: cover;
+        -o-background-size: cover;
+        background-size: cover;
+        width: 110%;
+        margin-top: -65px;
+        margin-left: -10px;
+      }
+    </style>
+  </head>
+  <body> 
+
+    <div class="gif">
+        <center><h1><%= @tag || "yo" %></h1></center>
+        <center><div id="comments"></div></center>
+    </div>
+
+    <script src="//connect.soundcloud.com/sdk.js"></script>
+    <script src="js/application.js"></script>
+  </body>
+</html>

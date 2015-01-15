@@ -1,0 +1,18 @@
+h1 {
+  font-family: arial;
+  color: #2BC8FC;
+  padding-top: 200px;
+  font-size: 96px;
+  margin-bottom: -10px;
+}
+#comments {
+  margin-top: -25px, 50px;
+  font-family: arial;
+  font-size: 30px;
+  color: #2BC8FC;
+  height: 400px;
+  overflow: hidden;
+}
+p {
+  margin-bottom: -15px;
+}
