@@ -1,6 +1,7 @@
 require 'bundler'
 Bundler.require
 require 'json'
+require 'net/http'
 require './models/giph'
 
 class App < Sinatra::Base
