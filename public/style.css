@@ -1,11 +1,14 @@
+@import url(http://fonts.googleapis.com/css?family=Montserrat+Alternates);
+
 h1 {
-  font-family: arial;
+  font-family: "Montserrat Alternates", sans-serif;
   color: #2BC8FC;
   font-size: 96px;
   margin-bottom: -10px;
+  text-align: center;
 }
 .comments {
-  font-family: arial;
+  font-family: "Montserrat Alternates", sans-serif;
   font-size: 22px;
   line-height: 1.2;
   color: #2BC8FC;
