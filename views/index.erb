@@ -5,8 +5,8 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="style.css">
     <style>
-      .gif { 
-        background: url(<%=@image%>) no-repeat center center fixed; 
+      .gif {
+        background: url(<%=@image%>) no-repeat center center fixed;
         -webkit-background-size: cover;
         -moz-background-size: cover;
         -o-background-size: cover;
@@ -14,7 +14,7 @@
       }
     </style>
   </head>
-  <body> 
+  <body>
 
     <div class="gif">
         <div class="row"></div>
@@ -31,7 +31,7 @@
           <div class="col-md-1"></div>
           <div class="col-md-2" id="11"></div>
           <div class="col-md-6">
-            <h1><%= @tag || "yo" %></h1>
+            <h1><%= @keyword || "yo" %></h1>
           </div>
           <div class="col-md-2" id="12"></div>
           <div class="col-md-1"></div>
@@ -61,14 +61,14 @@
         client_id: '3f73e8bd9c4e62a632fc640226c5d92e'
       });
 
-      var keyword = "<%= @tag %>";
+      var keyword = "<%= @keyword %>";
 
       SC.get('/tracks', { q: keyword }, function(tracks) {
         console.log(tracks);
         var number = Math.floor(Math.random() * 50);
         var track_id = tracks[number].id;
         console.log(tracks[number]);
-        
+
         SC.stream("/tracks/"+track_id, {
           autoPlay: true,
           ontimedcomments: function(comments){
