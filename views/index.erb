@@ -65,7 +65,7 @@
 
       SC.get('/tracks', { q: keyword }, function(tracks) {
         console.log(tracks);
-        var number = Math.floor(Math.random() * 50);
+        var number = Math.floor(Math.random() * tracks.length);
         var track_id = tracks[number].id;
         console.log(tracks[number]);
 
