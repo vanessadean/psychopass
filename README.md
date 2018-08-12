@@ -6,5 +6,5 @@ If a song is found, it is played while the random word is displayed over the gif
 
 Send it out to delight (or not) your friends and enemies!
 
-Demo: https://giph-it-up.herokuapp.com/
+https://giph-it-up.herokuapp.com/
 
