@@ -1,17 +1,20 @@
 require 'bundler'
 Bundler.require
+
+Dotenv.load
+
 require 'json'
 require 'net/http'
+require 'open-uri'
+
 require './models/giph'
 
 class App < Sinatra::Base
-
   get '/' do
-    giphy = Giph.new('http://api.giphy.com/v1/gifs/random?api_key=dc6zaTOxFJmzC')
-    # @tag = giphy.random_tag
-    @image = giphy.image_url
+    giphy = Giph.new
     @keyword = giphy.random_keyword
+    @image = giphy.image_url
+    @soundcloud_id = ENV['SOUNDCLOUD_ID']
     erb :index
   end
-
 end
