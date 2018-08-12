@@ -1,4 +1,4 @@
-## Psychopass
+## Giph It Up
 
 This app takes a randomly generated word from the Wordnik api then uses that word to search SoundCloud for a random track and Giphy for a random gif.
 
