@@ -57,24 +57,26 @@
 
     <script src="//connect.soundcloud.com/sdk.js"></script>
     <script>
+      var keyword = "<%= @keyword %>";
+
       SC.initialize({
         client_id: "<%=@soundcloud_id %>"
       });
 
-      var keyword = "<%= @keyword %>";
-
       SC.get('/tracks', { q: keyword }, function(tracks) {
-        var number = Math.floor(Math.random() * tracks.length);
-        var track_id = tracks[number].id;
+        if (tracks.length > 0) {
+          var number = Math.floor(Math.random() * tracks.length);
+          var trackId = tracks[number].id;
 
-        SC.stream("/tracks/" + track_id, {
-          autoPlay: true,
-          ontimedcomments: function(comments){
-            var comment_stream = comments[0].body;
-            var div_id = Math.floor(Math.random() * 22);
-            $("#" + div_id).html("<center><p>" + comment_stream + "</p></center>");
-          }
-        });
+          SC.stream("/tracks/" + trackId, {
+            autoPlay: true,
+            ontimedcomments: function(comments){
+              var commentStream = comments[0].body;
+              var divId = Math.floor(Math.random() * 22);
+              $("#" + divId).html("<center><p>" + commentStream + "</p></center>");
+            }
+          });
+        }
       });
     </script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
