@@ -1,7 +1,7 @@
 <!doctype html>
 <html>
   <head>
-    <title>Psychopass</title>
+    <title>Giph It Up</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="style.css">
     <style>
@@ -15,7 +15,6 @@
     </style>
   </head>
   <body>
-
     <div class="gif">
         <div class="row"></div>
         <div class="row comments">
@@ -51,34 +50,9 @@
           <div class="col-md-2" id="18"></div>
           <div class="col-md-2" id="19"></div>
           <div class="col-md-1"></div>
+          <iframe title="deezer-widget" src="https://widget.deezer.com/widget/light/track/<%= @track_id %>" autoplay="true" width="300" height="150" frameborder="0" tracklist=false allowtransparency="true" allow="encrypted-media; clipboard-write"></iframe>
         </div>
         <!-- <center><div id="comments"></div></center> -->
     </div>
-
-    <script src="//connect.soundcloud.com/sdk.js"></script>
-    <script>
-      var keyword = "<%= @keyword %>";
-
-      SC.initialize({
-        client_id: "<%=@soundcloud_id %>"
-      });
-
-      SC.get('/tracks', { q: keyword }, function(tracks) {
-        if (tracks.length > 0) {
-          var number = Math.floor(Math.random() * tracks.length);
-          var trackId = tracks[number].id;
-
-          SC.stream("/tracks/" + trackId, {
-            autoPlay: true,
-            ontimedcomments: function(comments){
-              var commentStream = comments[0].body;
-              var divId = Math.floor(Math.random() * 22);
-              $("#" + divId).html("<center><p>" + commentStream + "</p></center>");
-            }
-          });
-        }
-      });
-    </script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
   </body>
 </html>
